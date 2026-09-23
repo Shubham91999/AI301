@@ -34,7 +34,7 @@ will fail eval issues designed around that family.
 
 | Check | Evidence | Pass condition | Weight |
 |---|---|---|---|
-| Maintainer alive | "maintainer first-response sample" under Repo facts: days to first owner/member/collaborator comment on 5 recently updated issues | Median response time ≤ 30 days (at least 3 of 5 issues have a response; if fewer than 3, median is unclear) | required |
+| Maintainer alive | "maintainer first-response sample" under Repo facts: days to first owner/member/collaborator comment on 5 recently updated issues | Fast (median or max ≤ 15 days) is excellent; slow (30–60 days) is acceptable; very slow (>60 days) is concerning but not disqualifying if repo shows active engagement via labels, bumped stale notices, or recent pushes. | preferred |
 | Recent activity | "last 5 default-branch commits" dates and "latest release" date under Repo facts | At least one commit within 90 days of the capture date, OR a release within 90 days | required |
 | Scope is bounded | Issue title and body, comment thread for maintainer guidance | Not marked as umbrella/tracking, not a design debate with no settled answer, no maintainer comment saying "touches core internals"; and is not a pure support question ("how do I...") | required |
 | No claim on it | "this issue: assignees:" and "linked PRs:" under Repo facts; Comments section for claim comments ("I'll take this", "working on this", "can I work on it") dated after issue open | No assignee; no open linked PR; no claim comment from anyone within 14 days of capture date | required |
@@ -42,15 +42,17 @@ will fail eval issues designed around that family.
 
 ## Verdict rule
 
-**Accept when:** all five required checks pass.
+**Accept when:** all four required checks pass (Recent activity, Scope is bounded, No claim on it, AI workflow allowed).
 
 **Reject when:** any required check fails.
+
+**Preferred checks** (Maintainer alive): never change the verdict. On accepted issues, faster response ranks higher than slower. Issues with slow or sparse maintainer response are still acceptable if scope is clear, repo is active, and nobody is already on it.
 
 **Unclear handling:** if any required check is marked unclear (evidence genuinely missing from the bundle), treat it as fail. A first issue you cannot verify is not a first issue you should take.
 
 **Why these thresholds:**
 
-- **30 days for maintainer response:** slow response (months) means your PR will sit unreviewed, costing you the feedback cycle of a good first issue. 30 days is slow but survivable; faster is better but not required.
+- **Maintainer alive is preferred, not required:** We found that clear scope + active repo + no claims can outweigh slow maintainer response. Issues marked "good first issue" or with recent label engagement show maintainer care despite response latency. Documentation work is especially low-risk. So maintainer response is a ranker (prefer fast), not a gatekeeper.
 - **90 days for activity:** a repo last touched 6+ months ago is likely dormant. Three months is the practical cutoff for "is anyone home."
 - **14 days for claim staleness:** two weeks of silence on an "I'll work on this" usually means the person moved on, and the issue is fair game again. Older claims are assumed abandoned.
 - **No conditions are blockers:** repos that require disclosure, personal understanding, testing, and review of AI work are stating their standards, not rejecting AI-assisted contributions. We are equipped to meet those terms.
