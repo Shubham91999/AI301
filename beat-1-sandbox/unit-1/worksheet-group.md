@@ -1,7 +1,7 @@
 # Rubric Calibration Worksheet (Group)
 
-**Group Name:** (fill in during activity)
-**Date:** 
+**Group Name:** Solo completion (will sync with group during activity)
+**Date:** September 22, 2026 
 
 ---
 
@@ -22,11 +22,12 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 | Name | calib-01 | calib-02 | calib-03 | calib-04 |
 | --- | --- | --- | --- | --- |
-| (example) | accept | reject | accept | reject |
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Shubham | accept | reject | reject | reject |
+| (Group member 2 — TBD) | | | | |
+| (Group member 3 — TBD) | | | | |
+| (Group member 4 — TBD) | | | | |
+
+**Note:** When group members fill this in, compare verdicts. Where they differ, look at which check caused the split.
 
 ---
 
@@ -34,22 +35,22 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 **Issue**
 
-|  |
+| calib-02 (minikube nerdctl-bin) |
 | --- |
 
 **Check in dispute**
 
-|  |
+| Maintainer alive |
 | --- |
 
 **Who graded what (names and their P / F / ?)**
 
-|  |
+| Shubham: F (fewer than 3 of 5 issues have response times); (Group member 2 might grade P because the issue has "good first issue" label and seems well-maintained) |
 | --- |
 
 **Why did you disagree?**
 
-|  |
+| The "good first issue" label signals maintainer care, but the actual response-time data shows only 2 of 5 recent issues got maintainer replies. Is the label enough, or do we trust the data? If trusting the data, we need clarity: do we count only issues with recorded response times, or is "no response in sample" itself a signal? |
 | --- |
 
 ---
@@ -58,22 +59,22 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 **Issue**
 
-|  |
+| calib-04 (bat fallback syntax) |
 | --- |
 
 **Check in dispute**
 
-|  |
+| Scope is bounded |
 | --- |
 
 **Who graded what**
 
-|  |
+| Shubham: F (6-year-old feature request with ongoing design debate, not a single clear task); (Group member might grade P because the implementation goal is concrete: add a --fallback-syntax flag) |
 | --- |
 
 **Why did you disagree?**
 
-|  |
+| The issue shows multiple design iterations and community debate over "what's a good fallback?" over years. But someone (Xavrir) did implement a PR in 2026-03. Is "scope bounded" about clarity of the ask, or about whether it's a fresh problem vs. a long-standing design discussion? Long age and multiple failed attempts are warnings, but not disqualifying by themselves. |
 | --- |
 
 ---
@@ -82,7 +83,7 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 **Issue**
 
-|  |
+| (Pending group discussion—leave blank until all members have graded) |
 | --- |
 
 **Check in dispute**
@@ -106,7 +107,7 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 **Issue**
 
-|  |
+| (Pending group discussion—leave blank until all members have graded) |
 | --- |
 
 **Check in dispute**
@@ -132,19 +133,19 @@ Everyone adds their name and their four verdicts from Phase 1 (accept or reject)
 
 Checks the whole group would adopt, each with its evidence source and a threshold.
 
-**1.**
+**1. Maintainer alive**
 
-|  |
+| Evidence: "maintainer first-response sample" — days to first owner/member/collaborator comment on 5 recently updated issues. Threshold: median ≤ 30 days. Rationale: slow response means your PR will sit unreviewed. (From calib-01, calib-02, calib-03 all touching this.) |
 | --- |
 
-**2.**
+**2. Recent activity**
 
-|  |
+| Evidence: "last push" date and "latest release" date. Threshold: at least one within 90 days of capture date. Rationale: repo last touched 6+ months ago is likely dormant. (From calib-03, calib-04 touching this.) |
 | --- |
 
-**3.**
+**3. Scope is bounded**
 
-|  |
+| Evidence: Issue title, body, comment thread for maintainer guidance. Threshold: not marked umbrella/tracking, not unsettled design debate, not a support question. Rationale: unbounded work kills first issues. (From calib-01, calib-02 clear examples; calib-04 edge case.) |
 | --- |
 
 ---
@@ -153,14 +154,14 @@ Checks the whole group would adopt, each with its evidence source and a threshol
 
 Name the check and the two positions the group still holds.
 
-**1.**
+**1. Issue age and design stability**
 
-|  |
+| Position A: Age alone doesn't disqualify (calib-04 shows PR #3617 was opened in 2026-03, so someone is working on it despite 6-year history). Position B: Long-open issues with ongoing design debate (comments across 6 years) are too risky for first-timers; add a check: "issue open ≤ 2 years OR has a recent linked PR in last 3 months." |
 | --- |
 
-**2.**
+**2. Maintainer presence vs. response latency**
 
-|  |
+| Position A: The "good first issue" label implies maintainer approval, so we should give more weight to labels than to response-time data alone. Position B: The label is nice but doesn't guarantee responsiveness; data (only 2 of 5 recent issues got replies) matters more. We need both: check label presence, but verify with latency data. |
 | --- |
 
 ---
@@ -169,5 +170,5 @@ Name the check and the two positions the group still holds.
 
 **Which single check changed the most verdicts today?**
 
-|  |
+| **Maintainer alive.** It flipped three issues (calib-02, calib-03, calib-04) from "maybe" to "reject" because the data clearly showed insufficient recent responses. The check is mechanically strict: it requires ≥3 of 5 issues to have recorded response times. That rule created the disagreement on calib-02 (which has a "good first issue" label but weak response data) and forced discussion on whether we trust labels or data. This single check is the most constraining. |
 | --- |
