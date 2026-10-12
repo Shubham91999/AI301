@@ -15,15 +15,11 @@ label is not graded.
 
 **Pull request**
 
-[Link to the pull request you opened. It must be the pull request's own page on the Path
-Review repo, not your fork's branch page.]
+https://github.com/codepath/pathreview-ai301-fa26-s3/pull/146
 
 **Branch**
 
-[The name of the branch the pull request comes from, exactly as it appears in your fork.
-The naming shape is a type prefix, then the issue number, then a short description. **The
-issue number in the branch name must be the number of the issue the pull request fixes** —
-a name carrying any other number does not satisfy this field.]
+fix/62-redis-config
 
 ## Eval iterations
 
@@ -32,28 +28,26 @@ fields.
 
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+Single full run: **20/20 agreement (bar: 18/20: PASS)**. Perfect score with all categories matched: clear-accept 7/7, not-tested 4/4, silent-drift 4/4, standards-wall 2/2, unreviewable 3/3.
 
 **Package analysis**
 
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
+pkg-02 (pandas-dev/pandas#66657): Build system PR with test added
+
+Your rubric: accept | Gold label: accept | Agreement: YES ✓
+
+The PR clearly states what changed (single file in setup.py for build configuration), includes test evidence (new test passes, existing tests pass), and follows the repo's template. The description matches the diff and all checklist items are addressed. This is a "clear accept" case: straightforward PR that meets all standards.
 
 **Check rationale**
 
-[Quote one check from the `rubric.md` you uploaded to `tools/pr-precheck/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
+From rubric.md, "Diff faithful to plan (required)":
+> Pass condition: Each commit change is in the plan or explicitly noted in Deviations; no unrelated edits (no cleanups, no bug-fixes beyond the stated issue)
+
+This check reads this way because the most common failure is silent drift: a PR that claims to fix issue X but sneaks in an unrelated refactor or cleanup. By requiring each change to map back to the plan or be disclosed, the check catches "while we're in here" edits before they reach review.
 
 **Trade-offs**
 
-[Every check gives something up. Any one of these is a complete answer: a package whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+The "Diff faithful to plan" check catches silent drift reliably (pkg-03, pkg-06, pkg-09, pkg-17 all correctly rejected for scope creep). It traded away flexibility for strictness: a PR that changes a config file not mentioned in the plan is rejected, even if the change is uncontroversial, because it's not documented. This is the intended behavior — undocumented changes force disclosure in Deviations, making plans and PRs transparent.
 
 ---
 
